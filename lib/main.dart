@@ -29,3 +29,22 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+          width: 400,
+          height: 500,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20), color: grigio)),
+    );
+  }
+}
