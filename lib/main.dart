@@ -1,4 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+TextStyle text_style_standard =
+    GoogleFonts.lato(fontSize: 20, fontStyle: FontStyle.normal);
+ButtonStyle style = ElevatedButton.styleFrom(
+    textStyle: text_style_standard,
+    fixedSize: const Size(200, 100),
+    primary: grigio);
+Color giallo = Color.fromARGB(247, 233, 174, 36);
+Color nero = Colors.black;
+Color grigio = Color.fromARGB(255, 230, 230, 230);
 
 void main() {
   runApp(const MyApp());
