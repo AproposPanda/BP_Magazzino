@@ -98,7 +98,7 @@ class ExampleSidebarX extends StatelessWidget {
           border: Border.all(
             color: actionColor.withOpacity(0.37),
           ),
-          gradient: const LinearGradient(
+          gradient:  LinearGradient(
             colors: [accentCanvasColor, canvasColor],
           ),
           boxShadow: [
@@ -117,7 +117,7 @@ class ExampleSidebarX extends StatelessWidget {
           size: 20,
         ),
       ),
-      extendedTheme: const SidebarXTheme(
+      extendedTheme:  SidebarXTheme(
         width: 200,
         decoration: BoxDecoration(
           color: canvasColor,
@@ -182,7 +182,7 @@ class _ScreensExample extends StatelessWidget {
             return ListView.builder(
               padding: const EdgeInsets.only(top: 10),
               itemBuilder: (context, index) => Container(
-                height: 100,
+                height: 30,
                 width: double.infinity,
                 margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
                 decoration: BoxDecoration(
@@ -220,10 +220,10 @@ String _getTitleByIndex(int index) {
   }
 }
 
-const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
+const primaryColor = Color.fromARGB(255, 254, 123, 0);
+Color canvasColor = Color.fromARGB(255, 50, 50, 50);
+Color scaffoldBackgroundColor = Color.fromARGB(255, 78, 78, 78);
+const accentCanvasColor = Color.fromARGB(255, 97, 94, 62);
 const white = Colors.white;
-final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
+Color actionColor = Theme_s.giallo.withOpacity(0.6);
 final divider = Divider(color: white.withOpacity(0.3), height: 1);

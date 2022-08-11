@@ -32,83 +32,95 @@ class MainStatefulWidget extends StatefulWidget {
 class Main_Widget extends State<MainStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SingleChildScrollView(
-        child: Container(
-          width: 400,
-          height: 500,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: Theme.grigio),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              //logo
-              Image.asset(
-                'images/logo.png',
-                height: 170,
-              ),
-              const SizedBox(height: 30),
-              // Username text
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Theme.grigio_chiaro,
-                      border: Border.all(color: Theme.giallo),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: utente,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Nome Utente",
-                      ),
-                    ),
-                  ),
+    return Container(
+      color: Theme.primario,
+      child: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            width: 400,
+            height: 500,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20), color: Theme.secondario),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //logo
+                Image.asset(
+                  'images/logo.png',
+                  height: 170,
                 ),
-              ),
-              const SizedBox(height: 10),
-              // Password text
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Theme.grigio_chiaro,
-                      border: Border.all(color: Theme.giallo),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: password,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Password",
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 30),
-              // Login Button
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
+                const SizedBox(height: 30),
+                // Username text
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Theme.primario,
+                        border: Border.all(color: Theme.giallo),
                         borderRadius: BorderRadius.circular(12)),
-                    primary: Theme.giallo,
-                    fixedSize: const Size(350, 50),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: utente,
+                        style: const TextStyle(
+                          color: Colors.white,
+          
+                    ),
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Nome Utente",
+                          hintStyle: TextStyle(color: Colors.white)
+                        ),
+                      ),
+                    ),
                   ),
-                  child: Text("ACCEDI", style: Theme.Text_Style_Button_Text),
-                  onPressed: () {
-                    print(utente.text + " " + password.text);                  
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => route_dashboard.Dashboard()));
-                  }),
-            ],
+                ),
+                const SizedBox(height: 10),
+                // Password text
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Theme.primario,
+                        border: Border.all(color: Theme.giallo),
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: password,
+                        obscureText: true,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Password",
+                          hintStyle: TextStyle(color: Colors.white)
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                // Login Button
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      primary: Theme.giallo,
+                      fixedSize: const Size(350, 50),
+                    ),
+                    child: Text("ACCEDI", style: Theme.Text_Style_Button_Text),
+                    onPressed: () {
+                      print(utente.text + " " + password.text);                  
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => route_dashboard.Dashboard()));
+                    }),
+              ],
+            ),
           ),
         ),
       ),
