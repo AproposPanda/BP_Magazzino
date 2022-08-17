@@ -4,6 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 TextStyle Text_Style_Button_Text =
     TextStyle(fontSize: 18, color: bianco, fontWeight: FontWeight.bold);
+TextStyle Text_Style_Text =
+    TextStyle(fontSize: 18, color: bianco, fontWeight: FontWeight.normal);
+TextStyle Text_Style_Search =
+    TextStyle(fontSize: 18, color:Color.fromARGB(247, 137, 137, 137),  fontWeight: FontWeight.normal);
 TextStyle Text_Style_Bold =
     GoogleFonts.lato(fontSize: 18, fontWeight: FontWeight.bold);
 TextStyle Text_Style_Corsivo =
@@ -21,5 +25,8 @@ Color grigio = Color.fromARGB(255, 50, 50, 50);
 Color grigio_chiaro = Color.fromARGB(255, 245, 245, 245);
 Color bianco = Colors.white;
 
-Color primario = Color.fromARGB(255, 78, 78, 78);
-Color secondario = Color.fromARGB(255, 50, 50, 50);
+//Color primario = Color.fromARGB(255, 78, 78, 78);
+//Color secondario = Color.fromARGB(255, 50, 50, 50);
+
+Color primario = Color.fromARGB(255, 189, 189, 189);
+Color secondario = Color.fromARGB(255, 142, 142, 142);

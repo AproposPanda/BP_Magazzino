@@ -1,8 +1,14 @@
 import 'dart:developer';
+import 'dart:html';
+import 'package:bpmagazzino/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'theme.dart' as Theme_s;
+
+bool menu = false;
+int W_menu = 100;
 
 class Dashboard extends StatelessWidget {
   Dashboard({Key? key}) : super(key: key);
@@ -13,217 +19,363 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dashboard',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: primaryColor,
-        canvasColor: canvasColor,
-        scaffoldBackgroundColor: scaffoldBackgroundColor,
-        textTheme: const TextTheme(
-          headline5: TextStyle(
-            color: Colors.white,
-            fontSize: 46,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-      ),
-      home: Builder(
-        builder: (context) {
-          final isSmallScreen = MediaQuery.of(context).size.width < 600;
-          return Scaffold(
-            key: _key,
-            appBar: isSmallScreen
-                ? AppBar(
-                    backgroundColor: canvasColor,
-                    title: Text(_getTitleByIndex(_controller.selectedIndex)),
-                    leading: IconButton(
-                      onPressed: () {
-                        _controller.setExtended(true);
-                        _key.currentState?.openDrawer();
-                      },
-                      icon: const Icon(Icons.menu),
-                    ),
-                  )
-                : null,
-            drawer: ExampleSidebarX(controller: _controller),
-            body: Row(
-              children: [
-                if (!isSmallScreen) ExampleSidebarX(controller: _controller),
-                Expanded(
-                  child: Center(
-                    child: _ScreensExample(
-                      controller: _controller,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
+      title: "Dashboard",
+      home: Scaffold(
+        body: MainStatefulWidget(),
+        backgroundColor: Theme_s.secondario,
       ),
     );
   }
 }
 
-class ExampleSidebarX extends StatelessWidget {
-  const ExampleSidebarX({
-    Key? key,
-    required SidebarXController controller,
-  })  : _controller = controller,
-        super(key: key);
+class MainStatefulWidget extends StatefulWidget {
+  const MainStatefulWidget({Key? key}) : super(key: key);
+  @override
+  State<MainStatefulWidget> createState() => Main_Widget();
+}
 
-  final SidebarXController _controller;
-
+class Main_Widget extends State<MainStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    return SidebarX(
-      controller: _controller,
-      theme: SidebarXTheme(
-        margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: canvasColor,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        hoverColor: scaffoldBackgroundColor,
-        textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
-        selectedTextStyle: const TextStyle(color: Colors.white),
-        itemTextPadding: const EdgeInsets.only(left: 30),
-        selectedItemTextPadding: const EdgeInsets.only(left: 30),
-        itemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: canvasColor),
-        ),
-        selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: actionColor.withOpacity(0.37),
-          ),
-          gradient:  LinearGradient(
-            colors: [accentCanvasColor, canvasColor],
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.28),
-              blurRadius: 30,
-            )
+    return Row(children: [
+      //Lateral Menu
+      Expanded(
+        child: Column(
+          children: [
+            SizedBox(
+                height: 100,
+                child: DrawerHeader(
+                    child: Image.asset(
+                  'images/logo.png',
+                  height: 30,
+                ))),
+            Divider(
+              height: 30,
+              thickness: 1,
+              indent: 0,
+              endIndent: 0,
+              color: Theme_s.giallo,
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              iconColor: Colors.white,
+              textColor: Colors.white,
+              hoverColor: Theme_s.giallo,
+              onTap: () {
+                print("Home");
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              iconColor: Colors.white,
+              textColor: Colors.white,
+              hoverColor: Theme_s.giallo,
+              onTap: () {
+                print("Home");
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              iconColor: Colors.white,
+              textColor: Colors.white,
+              hoverColor: Theme_s.giallo,
+              onTap: () {
+                print("Home");
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text("Home"),
+              iconColor: Colors.white,
+              textColor: Colors.white,
+              hoverColor: Theme_s.giallo,
+              onTap: () {
+                print("Home");
+              },
+            ),
           ],
         ),
-        iconTheme: IconThemeData(
-          color: Colors.white.withOpacity(0.7),
-          size: 20,
-        ),
-        selectedIconTheme: const IconThemeData(
-          color: Colors.white,
-          size: 20,
-        ),
       ),
-      extendedTheme:  SidebarXTheme(
-        width: 200,
-        decoration: BoxDecoration(
-          color: canvasColor,
-        ),
-      ),
-      footerDivider: divider,
-      headerBuilder: (context, extended) {
-        return SizedBox(
-          height: 100,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('images/logo.png'),
-          ),
-        );
-      },
-      items: [
-        SidebarXItem(
-          icon: Icons.home,
-          label: 'Home',
-          onTap: () {
-            debugPrint('Home');
-          },
-        ),
-        const SidebarXItem(
-          icon: Icons.search,
-          label: 'Search',
-        ),
-        const SidebarXItem(
-          icon: Icons.people,
-          label: 'People',
-        ),
-        const SidebarXItem(
-          icon: Icons.favorite,
-          label: 'Favorite',
-        ),
-        const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'Flutter',
-        ),
-      ],
-    );
-  }
-}
-
-class _ScreensExample extends StatelessWidget {
-  const _ScreensExample({
-    Key? key,
-    required this.controller,
-  }) : super(key: key);
-
-  final SidebarXController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return AnimatedBuilder(
-      animation: controller,
-      builder: (context, child) {
-        final pageTitle = _getTitleByIndex(controller.selectedIndex);
-        switch (controller.selectedIndex) {
-          case 0:
-            return ListView.builder(
-              padding: const EdgeInsets.only(top: 10),
-              itemBuilder: (context, index) => Container(
-                height: 30,
-                width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 10, right: 10, left: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Theme.of(context).canvasColor,
-                  boxShadow: const [BoxShadow()],
+      // Dashboard
+      Expanded(
+        flex: 5,
+        child: Container(
+          color: Theme_s.primario,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15, top: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          primary: Theme_s.giallo,
+                          fixedSize: const Size(95, 38),
+                        ),
+                        child: Row(
+                          children: [const Text("+ NUOVO")],
+                        )),
+                    SizedBox(width: 20),
+                    Container(
+                      height: 38,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Theme_s.secondario,
+                      ),
+                      child: TextField(
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(top: 10, left: 5),
+                            suffixIcon: IconButton(
+                              icon:
+                                  const Icon(Icons.search, color: Colors.white),
+                              onPressed: () {
+                                print("click");
+                              },
+                            ),
+                            hintText: '  Search',
+                            hintStyle:
+                                TextStyle(color: Colors.white, fontSize: 14),
+                            border: InputBorder.none),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            );
-          default:
-            return Text(
-              pageTitle,
-              style: theme.textTheme.headline5,
-            );
-        }
-      },
-    );
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: Container(
+                  child: ListView(
+                    children: [
+                      Column(
+                        children: [
+                          SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Table(
+                                border: TableBorder.all(),
+                                columnWidths: const <int, TableColumnWidth>{
+                                  0: FixedColumnWidth(100),
+                                  1: FixedColumnWidth(100),
+                                  2: FixedColumnWidth(100),
+                                  3: FixedColumnWidth(100),
+                                  4: FixedColumnWidth(100),
+                                  5: FixedColumnWidth(100),
+                                  6: FixedColumnWidth(100),
+                                  7: FixedColumnWidth(100),
+                                  8: FixedColumnWidth(100),
+                                  9: FixedColumnWidth(100),
+                                  10: FixedColumnWidth(100),
+                                  11: FixedColumnWidth(100)
+                                },
+                                children: <TableRow>[
+                                  TableRow(children: <Widget>[
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                  ]),
+                                  TableRow(children: <Widget>[
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                  ]),
+                                  TableRow(children: <Widget>[
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                    Container(
+                                        child: Center(child: Text("prova")),
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: Colors.yellow)),
+                                  ])
+                                ],
+                              ))
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ]);
   }
 }
-
-String _getTitleByIndex(int index) {
-  switch (index) {
-    case 0:
-      return 'Home';
-    case 1:
-      return 'Search';
-    case 2:
-      return 'People';
-    case 3:
-      return 'Favorites';
-    case 4:
-      return 'Custom iconWidget';
-    default:
-      return 'Not found page';
-  }
-}
-
-const primaryColor = Color.fromARGB(255, 254, 123, 0);
-Color canvasColor = Color.fromARGB(255, 50, 50, 50);
-Color scaffoldBackgroundColor = Color.fromARGB(255, 78, 78, 78);
-const accentCanvasColor = Color.fromARGB(255, 97, 94, 62);
-const white = Colors.white;
-Color actionColor = Theme_s.giallo.withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);

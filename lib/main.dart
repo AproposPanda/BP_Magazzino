@@ -64,9 +64,7 @@ class Main_Widget extends State<MainStatefulWidget> {
                       child: TextField(
                         controller: utente,
                         style: const TextStyle(
-                          color: Colors.white,
-          
-                    ),
+                          color: Colors.white),
                         decoration: const InputDecoration(
                           border: InputBorder.none,
                           hintText: "Nome Utente",
