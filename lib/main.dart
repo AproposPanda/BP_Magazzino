@@ -40,7 +40,8 @@ class Main_Widget extends State<MainStatefulWidget> {
             width: 400,
             height: 500,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20), color: Theme.secondario),
+                borderRadius: BorderRadius.circular(20),
+                color: Theme.secondario),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -63,13 +64,11 @@ class Main_Widget extends State<MainStatefulWidget> {
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
                         controller: utente,
-                        style: const TextStyle(
-                          color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Nome Utente",
-                          hintStyle: TextStyle(color: Colors.white)
-                        ),
+                            border: InputBorder.none,
+                            hintText: "Nome Utente",
+                            hintStyle: TextStyle(color: Colors.white)),
                       ),
                     ),
                   ),
@@ -92,10 +91,9 @@ class Main_Widget extends State<MainStatefulWidget> {
                           color: Colors.white,
                         ),
                         decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Password",
-                          hintStyle: TextStyle(color: Colors.white)
-                        ),
+                            border: InputBorder.none,
+                            hintText: "Password",
+                            hintStyle: TextStyle(color: Colors.white)),
                       ),
                     ),
                   ),
@@ -111,11 +109,12 @@ class Main_Widget extends State<MainStatefulWidget> {
                     ),
                     child: Text("ACCEDI", style: Theme.Text_Style_Button_Text),
                     onPressed: () {
-                      print(utente.text + " " + password.text);                  
+                      print(utente.text + " " + password.text);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => route_dashboard.Dashboard()));
+                              builder: (context) =>
+                                  route_dashboard.Dashboard()));
                     }),
               ],
             ),

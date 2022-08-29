@@ -3,9 +3,9 @@ import 'dart:html';
 import 'package:bpmagazzino/main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sidebarx/sidebarx.dart';
 import 'theme.dart' as Theme_s;
+import 'order.dart' as route_order;
 
 bool menu = false;
 int W_menu = 100;
@@ -58,12 +58,15 @@ class Main_Widget extends State<MainStatefulWidget> {
             ),
             ListTile(
               leading: const Icon(Icons.home),
-              title: const Text("Home"),
+              title: const Text("Nuovo"),
               iconColor: Colors.white,
               textColor: Colors.white,
               hoverColor: Theme_s.giallo,
               onTap: () {
-                print("Home");
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => route_order.Order()));
               },
             ),
             ListTile(
