@@ -1,8 +1,8 @@
-import 'dart:developer';
+// ignore_for_file: prefer_interpolation_to_compose_strings, avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'routes/dashboard.dart' as route_dashboard;
-import 'routes/theme.dart' as Theme;
+import 'routes/theme.dart' as themes;
 
 void main() => runApp(const Main());
 
@@ -26,14 +26,14 @@ class Main extends StatelessWidget {
 class MainStatefulWidget extends StatefulWidget {
   const MainStatefulWidget({Key? key}) : super(key: key);
   @override
-  State<MainStatefulWidget> createState() => Main_Widget();
+  State<MainStatefulWidget> createState() => MainWidget();
 }
 
-class Main_Widget extends State<MainStatefulWidget> {
+class MainWidget extends State<MainStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.primario,
+      color: themes.primario,
       child: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -41,7 +41,7 @@ class Main_Widget extends State<MainStatefulWidget> {
             height: 500,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Theme.secondario),
+                color: themes.secondario),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -57,8 +57,8 @@ class Main_Widget extends State<MainStatefulWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Theme.primario,
-                        border: Border.all(color: Theme.giallo),
+                        color: themes.primario,
+                        border: Border.all(color: themes.giallo),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
@@ -79,8 +79,8 @@ class Main_Widget extends State<MainStatefulWidget> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Theme.primario,
-                        border: Border.all(color: Theme.giallo),
+                        color: themes.primario,
+                        border: Border.all(color: themes.giallo),
                         borderRadius: BorderRadius.circular(12)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
@@ -104,17 +104,17 @@ class Main_Widget extends State<MainStatefulWidget> {
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
-                      primary: Theme.giallo,
+                      primary: themes.giallo,
                       fixedSize: const Size(350, 50),
                     ),
-                    child: Text("ACCEDI", style: Theme.Text_Style_Button_Text),
+                    child: Text("ACCEDI", style: themes.Text_Style_Button_Text),
                     onPressed: () {
                       print(utente.text + " " + password.text);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  route_dashboard.Dashboard()));
+                                  const route_dashboard.Dashboard()));
                     }),
               ],
             ),

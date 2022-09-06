@@ -1,7 +1,5 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'theme.dart' as Theme;
+import 'theme.dart' as themes;
 
 void main() => runApp(const Order());
 
@@ -25,10 +23,10 @@ class Order extends StatelessWidget {
 class MainStatefulWidget extends StatefulWidget {
   const MainStatefulWidget({Key? key}) : super(key: key);
   @override
-  State<MainStatefulWidget> createState() => Main_Widget();
+  State<MainStatefulWidget> createState() => OrderWidget();
 }
 
-class Main_Widget extends State<MainStatefulWidget> {
+class OrderWidget extends State<MainStatefulWidget> {
   int _currentStep = 0;
   StepperType stepperType = StepperType.vertical;
 
@@ -38,123 +36,122 @@ class Main_Widget extends State<MainStatefulWidget> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text('Creazione nuovo ordine'),
-        backgroundColor: Theme.secondario,
+        backgroundColor: themes.secondario,
         centerTitle: true,
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(color: Theme.primario),
-                child: Stepper(
-                  type: stepperType,
-                  physics: ScrollPhysics(),
-                  currentStep: _currentStep,
-                  onStepTapped: (step) => tapped(step),
-                  onStepContinue: continued,
-                  onStepCancel: cancel,
-                  steps: <Step>[
-                    Step(
-                      title: new Text('Generale'),
-                      content: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Numero ordine'),
-                          ),
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Parte ordine'),
-                          ),
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Data Ordine'),
-                          ),
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Numero Ordine'),
-                          ),
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Parte ordine'),
-                          ),
-                        ],
-                      ),
-                      isActive: _currentStep >= 0,
-                      state: _currentStep >= 0
-                          ? StepState.complete
-                          : StepState.disabled,
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(color: themes.primario),
+              child: Stepper(
+                type: stepperType,
+                physics: const ScrollPhysics(),
+                currentStep: _currentStep,
+                onStepTapped: (step) => tapped(step),
+                onStepContinue: continued,
+                onStepCancel: cancel,
+                steps: <Step>[
+                  Step(
+                    title: const Text('Generale'),
+                    content: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Numero ordine'),
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Parte ordine'),
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Data Ordine'),
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Numero Ordine'),
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Parte ordine'),
+                        ),
+                      ],
                     ),
-                    Step(
-                      title: new Text('Struttura'),
-                      content: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Home Address'),
-                          ),
-                          TextFormField(
-                            decoration: InputDecoration(labelText: 'Postcode'),
-                          ),
-                        ],
-                      ),
-                      isActive: _currentStep >= 0,
-                      state: _currentStep >= 1
-                          ? StepState.complete
-                          : StepState.disabled,
+                    isActive: _currentStep >= 0,
+                    state: _currentStep >= 0
+                        ? StepState.complete
+                        : StepState.disabled,
+                  ),
+                  Step(
+                    title: const Text('Struttura'),
+                    content: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Home Address'),
+                        ),
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Postcode'),
+                        ),
+                      ],
                     ),
-                    Step(
-                      title: new Text('Superficie'),
-                      content: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Mobile Number'),
-                          ),
-                        ],
-                      ),
-                      isActive: _currentStep >= 0,
-                      state: _currentStep >= 2
-                          ? StepState.complete
-                          : StepState.disabled,
+                    isActive: _currentStep >= 0,
+                    state: _currentStep >= 1
+                        ? StepState.complete
+                        : StepState.disabled,
+                  ),
+                  Step(
+                    title: const Text('Superficie'),
+                    content: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Mobile Number'),
+                        ),
+                      ],
                     ),
-                    Step(
-                      title: new Text('Finitura'),
-                      content: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Mobile Number'),
-                          ),
-                        ],
-                      ),
-                      isActive: _currentStep >= 0,
-                      state: _currentStep >= 3
-                          ? StepState.complete
-                          : StepState.disabled,
+                    isActive: _currentStep >= 0,
+                    state: _currentStep >= 2
+                        ? StepState.complete
+                        : StepState.disabled,
+                  ),
+                  Step(
+                    title: const Text('Finitura'),
+                    content: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Mobile Number'),
+                        ),
+                      ],
                     ),
-                    Step(
-                      title: new Text('Spedizione'),
-                      content: Column(
-                        children: <Widget>[
-                          TextFormField(
-                            decoration:
-                                InputDecoration(labelText: 'Mobile Number'),
-                          ),
-                        ],
-                      ),
-                      isActive: _currentStep >= 0,
-                      state: _currentStep >= 4
-                          ? StepState.complete
-                          : StepState.disabled,
+                    isActive: _currentStep >= 0,
+                    state: _currentStep >= 3
+                        ? StepState.complete
+                        : StepState.disabled,
+                  ),
+                  Step(
+                    title: const Text('Spedizione'),
+                    content: Column(
+                      children: <Widget>[
+                        TextFormField(
+                          decoration:
+                              const InputDecoration(labelText: 'Mobile Number'),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                    isActive: _currentStep >= 0,
+                    state: _currentStep >= 4
+                        ? StepState.complete
+                        : StepState.disabled,
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

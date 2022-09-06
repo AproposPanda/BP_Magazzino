@@ -1,28 +1,21 @@
-import 'dart:developer';
-import 'dart:html';
-import 'package:bpmagazzino/main.dart';
+// ignore_for_file: avoid_print, sort_child_properties_last
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sidebarx/sidebarx.dart';
-import 'theme.dart' as Theme_s;
+import 'theme.dart' as themes;
 import 'order.dart' as route_order;
 
 bool menu = false;
-int W_menu = 100;
 
 class Dashboard extends StatelessWidget {
-  Dashboard({Key? key}) : super(key: key);
-
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
-  final _key = GlobalKey<ScaffoldState>();
+  const Dashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Dashboard",
       home: Scaffold(
-        body: MainStatefulWidget(),
-        backgroundColor: Theme_s.secondario,
+        body: const MainStatefulWidget(),
+        backgroundColor: themes.secondario,
       ),
     );
   }
@@ -31,10 +24,10 @@ class Dashboard extends StatelessWidget {
 class MainStatefulWidget extends StatefulWidget {
   const MainStatefulWidget({Key? key}) : super(key: key);
   @override
-  State<MainStatefulWidget> createState() => Main_Widget();
+  State<MainStatefulWidget> createState() => DashboardWidget();
 }
 
-class Main_Widget extends State<MainStatefulWidget> {
+class DashboardWidget extends State<MainStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
@@ -54,19 +47,19 @@ class Main_Widget extends State<MainStatefulWidget> {
               thickness: 1,
               indent: 0,
               endIndent: 0,
-              color: Theme_s.giallo,
+              color: themes.giallo,
             ),
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text("Nuovo"),
               iconColor: Colors.white,
               textColor: Colors.white,
-              hoverColor: Theme_s.giallo,
+              hoverColor: themes.giallo,
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => route_order.Order()));
+                        builder: (context) => const route_order.Order()));
               },
             ),
             ListTile(
@@ -74,7 +67,7 @@ class Main_Widget extends State<MainStatefulWidget> {
               title: const Text("Home"),
               iconColor: Colors.white,
               textColor: Colors.white,
-              hoverColor: Theme_s.giallo,
+              hoverColor: themes.giallo,
               onTap: () {
                 print("Home");
               },
@@ -84,7 +77,7 @@ class Main_Widget extends State<MainStatefulWidget> {
               title: const Text("Home"),
               iconColor: Colors.white,
               textColor: Colors.white,
-              hoverColor: Theme_s.giallo,
+              hoverColor: themes.giallo,
               onTap: () {
                 print("Home");
               },
@@ -94,7 +87,7 @@ class Main_Widget extends State<MainStatefulWidget> {
               title: const Text("Home"),
               iconColor: Colors.white,
               textColor: Colors.white,
-              hoverColor: Theme_s.giallo,
+              hoverColor: themes.giallo,
               onTap: () {
                 print("Home");
               },
@@ -106,7 +99,7 @@ class Main_Widget extends State<MainStatefulWidget> {
       Expanded(
         flex: 5,
         child: Container(
-          color: Theme_s.primario,
+          color: themes.primario,
           child: Column(
             children: [
               Padding(
@@ -119,24 +112,26 @@ class Main_Widget extends State<MainStatefulWidget> {
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
-                          primary: Theme_s.giallo,
+                          primary: themes.giallo,
                           fixedSize: const Size(95, 38),
                         ),
                         child: Row(
-                          children: [const Text("+ NUOVO")],
+                          children: const [Text("FILTRO")],
                         )),
-                    SizedBox(width: 20),
+                    const SizedBox(width: 20),
                     Container(
                       height: 38,
                       width: 200,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: Theme_s.secondario,
+                        color: themes.secondario,
                       ),
                       child: TextField(
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 14),
                         decoration: InputDecoration(
-                            contentPadding: EdgeInsets.only(top: 10, left: 5),
+                            contentPadding:
+                                const EdgeInsets.only(top: 10, left: 5),
                             suffixIcon: IconButton(
                               icon:
                                   const Icon(Icons.search, color: Colors.white),
@@ -145,234 +140,232 @@ class Main_Widget extends State<MainStatefulWidget> {
                               },
                             ),
                             hintText: '  Search',
-                            hintStyle:
-                                TextStyle(color: Colors.white, fontSize: 14),
+                            hintStyle: const TextStyle(
+                                color: Colors.white, fontSize: 14),
                             border: InputBorder.none),
                       ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Expanded(
-                child: Container(
-                  child: ListView(
-                    children: [
-                      Column(
-                        children: [
-                          SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Table(
-                                border: TableBorder.all(),
-                                columnWidths: const <int, TableColumnWidth>{
-                                  0: FixedColumnWidth(100),
-                                  1: FixedColumnWidth(100),
-                                  2: FixedColumnWidth(100),
-                                  3: FixedColumnWidth(100),
-                                  4: FixedColumnWidth(100),
-                                  5: FixedColumnWidth(100),
-                                  6: FixedColumnWidth(100),
-                                  7: FixedColumnWidth(100),
-                                  8: FixedColumnWidth(100),
-                                  9: FixedColumnWidth(100),
-                                  10: FixedColumnWidth(100),
-                                  11: FixedColumnWidth(100)
-                                },
-                                children: <TableRow>[
-                                  TableRow(children: <Widget>[
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                  ]),
-                                  TableRow(children: <Widget>[
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                  ]),
-                                  TableRow(children: <Widget>[
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                    Container(
-                                        child: Center(child: Text("prova")),
-                                        height: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.yellow)),
-                                  ])
-                                ],
-                              ))
-                        ],
-                      ),
-                    ],
-                  ),
+                child: ListView(
+                  children: [
+                    Column(
+                      children: [
+                        SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Table(
+                              border: TableBorder.all(),
+                              columnWidths: const <int, TableColumnWidth>{
+                                0: FixedColumnWidth(100),
+                                1: FixedColumnWidth(100),
+                                2: FixedColumnWidth(100),
+                                3: FixedColumnWidth(100),
+                                4: FixedColumnWidth(100),
+                                5: FixedColumnWidth(100),
+                                6: FixedColumnWidth(100),
+                                7: FixedColumnWidth(100),
+                                8: FixedColumnWidth(100),
+                                9: FixedColumnWidth(100),
+                                10: FixedColumnWidth(100),
+                                11: FixedColumnWidth(100)
+                              },
+                              children: <TableRow>[
+                                TableRow(children: <Widget>[
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                ]),
+                                TableRow(children: <Widget>[
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.white)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                ]),
+                                TableRow(children: <Widget>[
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                  Container(
+                                      child: const Center(child: Text("prova")),
+                                      height: 32,
+                                      decoration: const BoxDecoration(
+                                          color: Colors.yellow)),
+                                ])
+                              ],
+                            ))
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ],
