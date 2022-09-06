@@ -28,5 +28,5 @@ Color bianco = Colors.white;
 //Color primario = Color.fromARGB(255, 78, 78, 78);
 //Color secondario = Color.fromARGB(255, 50, 50, 50);
 
-Color primario = Color.fromARGB(255, 189, 189, 189);
+Color primario = Color.fromARGB(255, 223, 222, 222);
 Color secondario = Color.fromARGB(255, 142, 142, 142);

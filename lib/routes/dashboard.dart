@@ -263,7 +263,7 @@ class Main_Widget extends State<MainStatefulWidget> {
                                         child: Center(child: Text("prova")),
                                         height: 32,
                                         decoration: BoxDecoration(
-                                            color: Colors.yellow)),
+                                            color: Colors.white)),
                                     Container(
                                         child: Center(child: Text("prova")),
                                         height: 32,
