@@ -57,8 +57,11 @@ class OrderWidget extends State<MainStatefulWidget> {
                     content: Column(
                       children: <Widget>[
                         TextFormField(
-                          decoration:
-                              const InputDecoration(labelText: 'Numero ordine'),
+                          decoration: const InputDecoration(
+                            labelText: 'Numero ordine',
+                            hintText: "123/2022",
+                            prefixIcon: Icon(Icons.person),
+                          ),
                         ),
                         TextFormField(
                           decoration:

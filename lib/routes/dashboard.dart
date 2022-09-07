@@ -50,7 +50,7 @@ class DashboardWidget extends State<MainStatefulWidget> {
               color: themes.giallo,
             ),
             ListTile(
-              leading: const Icon(Icons.home),
+              leading: const Icon(Icons.add),
               title: const Text("Nuovo"),
               iconColor: Colors.white,
               textColor: Colors.white,
@@ -113,7 +113,7 @@ class DashboardWidget extends State<MainStatefulWidget> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                           primary: themes.giallo,
-                          fixedSize: const Size(95, 38),
+                          fixedSize: const Size(78, 38),
                         ),
                         child: Row(
                           children: const [Text("FILTRO")],
@@ -139,7 +139,7 @@ class DashboardWidget extends State<MainStatefulWidget> {
                                 print("click");
                               },
                             ),
-                            hintText: '  Search',
+                            hintText: 'Search',
                             hintStyle: const TextStyle(
                                 color: Colors.white, fontSize: 14),
                             border: InputBorder.none),
