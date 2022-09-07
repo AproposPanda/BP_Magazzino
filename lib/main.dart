@@ -104,7 +104,7 @@ class MainWidget extends State<MainStatefulWidget> {
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
-                      primary: themes.giallo,
+                      backgroundColor: themes.giallo,
                       fixedSize: const Size(350, 50),
                     ),
                     child: Text("ACCEDI", style: themes.Text_Style_Button_Text),

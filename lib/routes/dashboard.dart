@@ -112,7 +112,7 @@ class DashboardWidget extends State<MainStatefulWidget> {
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
-                          primary: themes.giallo,
+                          backgroundColor: themes.giallo,
                           fixedSize: const Size(78, 38),
                         ),
                         child: Row(

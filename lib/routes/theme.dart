@@ -20,8 +20,8 @@ TextStyle Text_Style_Title =
 
 ButtonStyle style = ElevatedButton.styleFrom(
     textStyle: Text_Style_Button_Text,
-    fixedSize: const Size(200, 100),
-    primary: grigio);
+    backgroundColor: grigio,
+    fixedSize: const Size(200, 100));
 Color giallo = const Color.fromARGB(247, 233, 174, 36);
 Color nero = Colors.black;
 Color grigio = const Color.fromARGB(255, 50, 50, 50);
